@@ -15,5 +15,18 @@ public class ControlAcheterProduit {
 		this.controlTrouverEtalVendeur = controlTrouverEtalVendeur;
 	}
 
+	public String[] cotrolEtatMarche() {
+		return village.donnerEtatMarche();
+	}
+
+	public int  acheterProduit(String nom_marchand, int quantite) {
+		return controlTrouverEtalVendeur.trouverEtalVendeur(nom_marchand).acheterProduit(quantite);
+		
+		
+	}
+
+
 	//TODO a complete
+	
+	
 }
