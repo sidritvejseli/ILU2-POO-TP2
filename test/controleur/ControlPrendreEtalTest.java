@@ -33,51 +33,46 @@ class ControlPrendreEtalTest {
 		
 	}
 
+	
+	void ajouterMarchand(ControlEmmenager controlEmmenager, ControlPrendreEtal controlPrendreEtal,String nom ,String produit) {
+		controlEmmenager.ajouterGaulois(nom, 10);
+		controlPrendreEtal.prendreEtal(nom, produit, 1);
+		
+	}
+	
 	@Test
 	void testResteEtals() {
 		assertTrue(controlPrendreEtal.resteEtals());
-		controlEmmenager.ajouterGaulois("Bonemine", 10);
-		controlPrendreEtal.prendreEtal("Bonemine", "fleurs", 1);
+		String nom;
+		String produit;
 		
-		assertTrue(controlPrendreEtal.resteEtals());
-		controlEmmenager.ajouterGaulois("Bonemine", 10);
-		controlPrendreEtal.prendreEtal("Bonemine", "fleurs", 1);
-		
-		assertTrue(controlPrendreEtal.resteEtals());
-		controlEmmenager.ajouterGaulois("Bonemine", 10);
-		controlPrendreEtal.prendreEtal("Bonemine", "fleurs", 1);
-		
-		assertTrue(controlPrendreEtal.resteEtals());
-		controlEmmenager.ajouterGaulois("Bonemine", 10);
-		controlPrendreEtal.prendreEtal("Bonemine", "fleurs", 1);
-		
-		assertTrue(controlPrendreEtal.resteEtals());
-		controlEmmenager.ajouterGaulois("Bonemine", 10);
-		controlPrendreEtal.prendreEtal("Bonemine", "fleurs", 1);
-		
+		for (int i = 0; i < village.donnerNbEtal(); i++) {
+			assertTrue(controlPrendreEtal.resteEtals());
+			nom = "Gaulois" + i;
+			produit = "Produit" + i;
+			ajouterMarchand(controlEmmenager, controlPrendreEtal, nom, produit);
+			
+		}
+
 		assertFalse(controlPrendreEtal.resteEtals());
 
 	}
 
 	@Test
 	void testPrendreEtal() {
-		controlEmmenager.ajouterGaulois("Bonemine", 10);
-		assertTrue(controlPrendreEtal.prendreEtal("Bonemine", "fleurs", 1) == 0);
+		String nom;
+		String produit;
+	
 		
-		controlEmmenager.ajouterGaulois("Bob", 10);
-		assertTrue(controlPrendreEtal.prendreEtal("Bob", "fleurs", 1) == 1);
+		for (int i = 0; i < village.donnerNbEtal(); i++) {
+			nom = "Gaulois" + i;
+			produit = "Produit" + i;
+			
+			controlEmmenager.ajouterGaulois(nom, 10);
+			assertTrue(controlPrendreEtal.prendreEtal(nom,produit , 1) == i);
+			
+		}
 		
-		//System.out.println(controlPrendreEtal.prendreEtal("Inconnu", "fleurs", 1));
-		//L'identite du marchand est verifie dans boundary
-		
-		controlEmmenager.ajouterGaulois("Pano", 10);
-		assertTrue(controlPrendreEtal.prendreEtal("Pano", "fleurs", 1) == 2);
-		
-		controlEmmenager.ajouterGaulois("Asterix", 10);
-		assertTrue(controlPrendreEtal.prendreEtal("Asterix", "fleurs", 1) == 3);
-		
-		controlEmmenager.ajouterGaulois("Obelix", 10);
-		assertTrue(controlPrendreEtal.prendreEtal("Obelix", "fleurs", 1) == 4);
 		
 		controlEmmenager.ajouterGaulois("Obelix", 10);
 		assertTrue(controlPrendreEtal.prendreEtal("Obelix", "fleurs", 1) == -1);
