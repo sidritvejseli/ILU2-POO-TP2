@@ -21,6 +21,7 @@ public class ControlPrendreEtal {
 		
 		 
 		int numeroEtal = village.installerVendeur(village.trouverHabitant(nomVendeur), produit, nbProduit);
+		
 		return numeroEtal;
 	}
 

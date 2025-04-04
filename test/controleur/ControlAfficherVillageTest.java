@@ -20,6 +20,7 @@ class ControlAfficherVillageTest {
 	@BeforeEach
 	public void initialiserSituation() {
 		village = new Village("le village des irréductibles", 10, 5);
+		
 		abraracourcix = new Chef("Abraracourcix", 10, village);
 		village.setChef(abraracourcix);
 		controlAfficherVillage = new ControlAfficherVillage(village);
@@ -50,7 +51,8 @@ class ControlAfficherVillageTest {
 
 	@Test
 	void testDonnerNbEtals() {
-		fail("Not yet implemented");
+		assertTrue(village.donnerNbEtal()==5);
+		
 	}
 
 }
